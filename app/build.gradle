@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+    defaultConfig {
+        applicationId "com.example.bingbindong.myapplication"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+            moduleName "TestJni"
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "41a82e518e0bf205f00f14e3", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            jniDebuggable true
+        }
+    }
+
+    dexOptions {
+        preDexLibraries = false
+        javaMaxHeapSize "2g"
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:9.6.1'
+    compile 'com.android.support:design:24.2.1'
+    testCompile 'junit:junit:4.12'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0'
+    compile 'com.github.lawloretienne:discreteslider:0.0.9'
+    compile 'org.adw.library:discrete-seekbar:1.0.1'
+    compile 'com.android.support:cardview-v7:21.0.+'
+    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile 'com.facebook.react:react-native:+'
+    // From node_modules.
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'cn.jiguang.sdk:jpush:3.0.0'
+    // 此处以JPush 3.0.0 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.0.0'
+    // 此处以JCore 1.0.0 版本为例。
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.alibaba:fastjson:1.1.46.android'
+    compile 'com.taobao.android:weex_sdk:0.5.1@aar'
+}
+//buildscript {
+//    repositories {
+//        mavenCentral()
+//        maven {
+//            url "https://oss.sonatype.org/content/repositories/snapshots/"
+//        }
+//    }
+//
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:2.2.1'
+//
+//    }
+//}

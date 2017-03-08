@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_next"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.bingbindong.myapplication.NextActivity">
+    <Button
+        android:id="@+id/fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="next2Activity" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_button"
+
+        android:text="Close"
+        android:layout_below="@+id/fff"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/getAppData"
+        android:layout_above="@+id/my_button"
+        android:text="GetAppData"
+        />
+
+    <TextView
+        android:id="@+id/ccc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        android:background="@color/colorAccent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/my_button"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/ddd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ccc"
+        android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/eee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ddd"
+        android:text="send message" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eee"
+        android:divider="@null" />
+
+    <SeekBar
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="55dp"
+        android:id="@+id/seekBar2" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/getAppData"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/ratingBar" />
+
+
+
+
+
+</RelativeLayout>
