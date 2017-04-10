@@ -164,7 +164,8 @@
         <activity
             android:name=".ScoreBookingTipActivity"
             android:theme="@style/AppTheme.Light.Transparent" />
-        <activity android:name=".TestClipChildrenActivity"></activity>
+        <activity android:name=".TestClipChildrenActivity" />
+        <activity android:name=".SlidingupPanelActivity"></activity>
     </application>
 
 </manifest>

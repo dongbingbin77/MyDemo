@@ -12,6 +12,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -115,6 +117,17 @@ public class MainActivity extends Activity {
         for(int i =0;i<10000;i++){
             tickets.add("火车票"+i);
         }
+
+
+        Handler mHandler = new Handler(Looper.myLooper()){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+
+            }
+        };
+
+
 
         Thread returnThread=new Thread(){
           public void run(){
@@ -273,6 +286,17 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setClass(MainActivity.this,TestClipChildrenActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button my_button_slidinguppanel = (Button)findViewById(R.id.my_button_slidinguppanel);
+        my_button_slidinguppanel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,SlidingupPanelActivity.class);
                 startActivity(intent);
             }
         });
