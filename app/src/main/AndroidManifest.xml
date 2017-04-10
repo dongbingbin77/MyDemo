@@ -43,11 +43,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -165,7 +161,17 @@
             android:name=".ScoreBookingTipActivity"
             android:theme="@style/AppTheme.Light.Transparent" />
         <activity android:name=".TestClipChildrenActivity" />
-        <activity android:name=".SlidingupPanelActivity"></activity>
+        <activity android:name=".SlidingupPanelActivity" />
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

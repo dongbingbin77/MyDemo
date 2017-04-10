@@ -180,7 +180,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//        try {
+//            Thread.sleep(5000);
+//        }catch(Exception e){
+//
+//        }
 //        WindowManager.LayoutParams params = getWindow().getAttributes();
 //        params.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
 //        getWindow().setAttributes(params);
