@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.example.bingbindong.myapplication.MainActivity;
 import com.example.bingbindong.myapplication.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.lang.ref.WeakReference;
 
 public class HandlerDemoActivity extends AppCompatActivity {
@@ -59,7 +61,20 @@ public class HandlerDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_handler_demo);
         mainThreadCallSubThread();
 
-        handlerRunOnNewThread();
+        //handlerRunOnNewThread();
+
+        new Thread("EventBus_Demo"){
+          @Override
+          public void run(){
+              try {
+                  EventBus eb = EventBus.getDefault();
+                  Log.d("Test Thread",Thread.currentThread().getName());
+              }catch(Exception e){
+                  e.printStackTrace();
+              }
+          }
+        }.start();
+
 //        MyNoLeakHandler myHandlerNoLeak = new MyNoLeakHandler(this);
 //        myHandlerNoLeak.sendMessageDelayed(Message.obtain(),5000);
 //        //mLeakyHandler.sendMessageDelayed(Message.obtain(),5000);
@@ -131,12 +146,14 @@ public class HandlerDemoActivity extends AppCompatActivity {
         try
         {
             //模拟耗时
-            Thread.sleep(1000);
+            Thread.sleep(10000);
+            Log.d("checkForUpdate",Thread.currentThread().getName());
             mHandler.post(new Runnable()
             {
                 @Override
                 public void run()
                 {
+                    Log.d("checkForUpdate-Runnable",Thread.currentThread().getName());
                     String result = "实时更新中，当前大盘指数：<font color='red'>%d</font>";
                     result = String.format(result, (int) (Math.random() * 3000 + 1000));
                     mTvServiceInfo.setText(result);
