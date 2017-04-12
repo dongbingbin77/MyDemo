@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bingbindong.myapplication.EventData.FirstEvent;
+import com.example.bingbindong.myapplication.HandlerDemo.HandlerDemoActivity;
 import com.example.bingbindong.myapplication.autoupdate.UpdateChecker;
 import com.example.bingbindong.myapplication.utils.TimeUtil;
 import com.example.bingbindong.myapplication.utils.UserManager;
@@ -92,7 +93,6 @@ public class MainActivity extends Activity {
     private Button drawRect = null;
 
     private App app;
-
     private String[] testArr = {"123", "321", "111", "222"};
     private String testStr = "123";
     private String selectedStars = "ONE,TWO,THREE,FIVE";
@@ -172,14 +172,51 @@ public class MainActivity extends Activity {
     private static final List<String> scoresFreeCodeArr = Arrays.asList("JJCOM","MRP");
 
 
+    private static class MyHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Log.d("handleMessage", "handleMessage: ");
+        }
+    }
+
     public static Boolean isScoresFreeCode(String freeCode){
         return scoresFreeCodeArr.contains(freeCode);
     }
 
+    class LooperThread extends Thread {
+        public Handler mHandler;
+
+        public void run() {
+            Looper.prepare();
+            mHandler = new Handler() {
+                public void handleMessage(Message msg) {
+// process incoming messages here
+                }
+            };
+            Looper.loop();
+        }
+    }
+    private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        Handler myHandler = new Handler(){
+//            @Override
+//            public void handleMessage(Message msg) {
+//                super.handleMessage(msg);
+//                Log.d("handleMessage", "handleMessage: ");
+//                Button button = (Button)MainActivity.this.findViewById(R.id.my_button3);
+//                button.setBackgroundColor(Color.RED);
+//            }
+//        };
+        //myHandler.sendMessageDelayed(Message.obtain(),5000);
+       // Handler handler = new Handler();
+
+
+
 //        try {
 //            Thread.sleep(5000);
 //        }catch(Exception e){
@@ -261,7 +298,15 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-
+        Button my_button_handler = (Button)findViewById(R.id.my_button_handler);
+        my_button_handler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,HandlerDemoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Button my_button3 = (Button)findViewById(R.id.my_button3);
         my_button3.setOnClickListener(new View.OnClickListener() {

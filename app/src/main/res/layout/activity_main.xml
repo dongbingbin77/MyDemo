@@ -76,6 +76,14 @@
     android:layout_centerHorizontal="true"
     android:orientation="vertical"
     >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_button_handler"
+
+        android:layout_gravity="center"
+        android:text="Handler"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
